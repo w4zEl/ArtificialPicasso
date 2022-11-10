@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 from PIL import Image, ImageTk
 import cv2
 import os
@@ -33,17 +33,13 @@ def takePicture():
     cv2.imwrite(str(os.getcwd()) + '\\testimage.jpg', frame)
     stopWebcamStream()
 
-global root
-root = Tk()
-window = Frame(root)
+
+root = tk.Tk()
+window = tk.Frame(root)
 window.grid()
-webcam = Label(window)
+webcam = tk.Label(window)
 webcam.grid()
-btnPicture = Button(window, width=20, text="take picture", font="none 12", command=takePicture)
+btnPicture = tk.Button(window, width=20, text="take picture", font="none 12", command=takePicture)
 btnPicture.grid()
 lightsCameraAction()
 root.mainloop()
-
-
-
-
