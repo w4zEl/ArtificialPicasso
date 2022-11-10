@@ -19,15 +19,35 @@ Adib Raed - [Aries1124](https://github.com/Aries1124)
 Jason Cheng - [jcheng3927](https://github.com/jcheng3927)
 
 # **⭕ How to Use**
-Run it
+1. [Download Python 3](https://www.python.org/downloads/).
+2. Clone the repository.
+
+    ```shell
+    git clone https://github.com/w4zEl/ArtificialPicasso.git
+    ```
+
+3. Install the dependencies.
+
+    ```shell
+    pip install -r requirements.txt
+    ```
+
+4. Run `main.py`.
+
+    ```shell
+    python main.py
+    ```
+
+5. Take a picture and see the animated tracing. Enjoy!
 
 # **🥁 Prequisites**
-A computer
+- A computer
+- Python 3
 
 # **🍎 Built With**
 Love and tears
 
 # **🎹 License**
-Distributed under the GNU General Public License. See LICENSE for more information.
+Distributed under the [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html). See LICENSE for more information.
 
 **Mahjong**
