@@ -1,9 +1,9 @@
-# The Artistic Picasso by Mahjong
+# The Artificial Picasso by Mahjong
 * [**Github Repository**](https://github.com/w4zEl/ArtificialPicasso)
 * [**Waterloo Software Engineering**](https://uwaterloo.ca/future-students/programs/software-engineering)
 
 ![](https://i.imgur.com/3HFtfFP.png)
-Hello! We are Mahjong, a small group of software engineering students at the University of Waterloo passionate about the integration of technology and art. *The Artistic Picasso* is a robot that sketches out a physical drawing on paper based on an image input taken from a webcam.
+Hello! We are Mahjong, a small group of software engineering students at the University of Waterloo passionate about the integration of technology and art. *The Artificial Picasso* is a robot that sketches out a physical drawing on paper based on an image input taken from a webcam.
 
 <br>📷 See more info below ⬇️
 
