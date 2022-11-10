@@ -130,5 +130,4 @@ dmypy.json
 
 .idea
 
-image_*.jpg
-trace_*.jpg
+/output_images
