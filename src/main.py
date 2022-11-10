@@ -31,7 +31,7 @@ def stopWebcamStream():
 def takePicture():
     global frame
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    cv2.imwrite(f"image_{now}.jpg", frame)
+    cv2.imwrite(f"../output_images/image_{now}.jpg", frame)
     stopWebcamStream()
     window.destroy()
     screen_width = root.winfo_screenwidth()
@@ -50,7 +50,7 @@ def takePicture():
     speedSlider = tk.Scale(root, from_=0, to=100, length=250, orient='horizontal')
     speedSlider.set(100)
     speedSlider.pack()
-    tk.Button(root, text='Run', command=lambda: cv2.imwrite(f'trace_{now}.jpg', ImageTracer.run(frame, minStrokeLengthSlider.get(), speedSlider.get())),
+    tk.Button(root, text='Run', command=lambda: cv2.imwrite(f'../output_images/trace_{now}.jpg', ImageTracer.run(frame, minStrokeLengthSlider.get(), speedSlider.get())),
               width=10).pack(pady=(20, 20))
     tk.Label(root, text="Press Q to stop animation").pack()
 
