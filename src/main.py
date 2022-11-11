@@ -69,10 +69,9 @@ def takePicture():
             p1 = p1[0] + dx, p1[1] + dy
             p2 = p2[0] + dx, p2[1] + dy
             move_start = event.x, event.y
-            update_rect()
         else:
             p2 = event.x, event.y
-            update_rect()
+        update_rect()
 
     def mouse_up(event):
         nonlocal p2, has_rect
