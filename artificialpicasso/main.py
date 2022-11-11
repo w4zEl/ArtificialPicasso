@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import cv2
 import ImageTracer
 from datetime import datetime
+from mathutils import between
 
 isCameraOn = False
 
@@ -44,9 +45,6 @@ def takePicture():
     crop_box_id = None
     has_rect = False
     move_start: tuple
-
-    def between(b1, b2, v):
-        return min(b1, b2) <= v <= max(b1, b2)
 
     def mouse_down(event):
         nonlocal p1, has_rect, move_start
