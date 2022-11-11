@@ -54,13 +54,16 @@ def takePicture():
             move_start = event.x, event.y
         else:
             has_rect = False
+            reset_rect()
             p1 = event.x, event.y
 
     def update_rect():
         nonlocal p1, p2, crop_box_id
-        canvas.delete(crop_box_id)
         if p1 and p2:
-            crop_box_id = canvas.create_rectangle(*p1, *p2, width=2)
+            if crop_box_id:
+                canvas.coords(crop_box_id, *p1, *p2)
+            else:
+                crop_box_id = canvas.create_rectangle(*p1, *p2, width=1)
 
     def mouse_move(event):
         nonlocal p1, p2, has_rect, move_start
@@ -79,11 +82,12 @@ def takePicture():
             p2 = event.x, event.y
             has_rect = True
 
-    def reset_rect(event):
-        nonlocal p1, p2, has_rect
+    def reset_rect(event=None):
+        nonlocal p1, p2, has_rect, crop_box_id
         p1 = p2 = None
         has_rect = False
-        update_rect()
+        canvas.delete(crop_box_id)
+        crop_box_id = None
 
     canvas.bind("<Button-1>", mouse_down)
     canvas.bind("<B1-Motion>", mouse_move)
