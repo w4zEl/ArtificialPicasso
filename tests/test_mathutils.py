@@ -33,16 +33,6 @@ def test_not_between(b1, b2, val):
 def test_cosine_law_find_angle(a, b, c, angle): 
     assert abs(cosine_law_find_angle(a, b, c) - angle) < 0.000001
 
-@pytest.mark.parametrize("a, b, c, angle", [
-    (6, 7, 9, 90),
-    (68, 20, 85, 140),
-    (17.5, 20, 5, 14), 
-    (2, 3, 4, 100), 
-    (22, 66, 44, 1)
-])
-def test_not_cosine_law_find_angle(a, b, c, angle): 
-    assert not abs(cosine_law_find_angle(a, b, c) - angle) < 0.000001
-
 @pytest.mark.parametrize("a, b, angle, side_found", [
     (15, 16, 2.5, 1.2070019224128155), 
     (20, 40, 1, 20.006091266156265),
@@ -54,14 +44,3 @@ def test_not_cosine_law_find_angle(a, b, c, angle):
 def test_cosine_law_find_side(a, b, angle, side_found): 
     assert abs(cosine_law_find_side(a, b, angle) - side_found) < 0.000001
 
-@pytest.mark.parametrize("a, b, angle, side_found", [
-    (6, 7, 10.5, 1),
-    (2, 4, 90, 4), 
-    (69, 420, 0.1, 350), 
-    (2.5, 8.55, 120, 20),
-    (60, 30, 15, 29)
-])
-
-def test_not_cosine_law_find_side(a, b, angle, side_found): 
-    assert not abs(cosine_law_find_side(a, b, angle) - side_found) < 0.000001
-    
