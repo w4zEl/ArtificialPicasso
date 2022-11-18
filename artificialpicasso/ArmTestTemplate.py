@@ -17,5 +17,5 @@ if __name__ == '__main__':
     atexit.register(controller.reset_positions)
 
 
-    def move_to_paper_coords(x: float, y: float, *rest) -> None:
-        controller.move_to(x + paper_delta_x, y + paper_delta_y, *rest)
+def move_to_paper_coords(x: float, y: float, *rest) -> None:
+    controller.move_to(x + paper_delta_x, y + paper_delta_y, *rest)
