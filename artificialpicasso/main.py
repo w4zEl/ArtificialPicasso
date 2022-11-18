@@ -12,9 +12,10 @@ def lights_camera_action():
     global cam, isCameraOn
     cam = cv2.VideoCapture(0)
     isCameraOn = True
-    webcamStream()
+    webcam_stream()
 
-def webcamStream():
+
+def webcam_stream():
     global frame, isCameraOn
     if isCameraOn:
         _, frame = cam.read()
@@ -23,7 +24,7 @@ def webcamStream():
         imgtk = ImageTk.PhotoImage(image=img)
         webcam.imgtk = imgtk
         webcam.configure(image=imgtk)
-        webcam.after(1, webcamStream)
+        webcam.after(1, webcam_stream)
 
 
 def stopWebcamStream():
