@@ -7,6 +7,7 @@ from mathutils import between
 
 isCameraOn = False
 
+
 def lightsCameraAction():
     global cam, isCameraOn
     cam = cv2.VideoCapture(0)
