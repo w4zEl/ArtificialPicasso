@@ -10,6 +10,8 @@ min_pulse, max_pulse = 500, 2600
 
 
 def make_servo(channel: int) -> Servo:
+    """Initialize the servos
+    """
     return Servo(pca.channels[channel], min_pulse=min_pulse, max_pulse=max_pulse)
 
 
@@ -19,6 +21,14 @@ def cleanup() -> None:
 
 
 def rotate(s: Servo, angle: float, seconds: float = 0.5, increment: float = 1) -> None:
+    """Rotates the given servo to the desired angle in the desired amount of time.
+
+    Args:
+        s (Servo): The servo to rotate 
+        angle (float): The angle in degrees to rotate. 0 <= angle <= 180
+        seconds (float, optional): Time in seconds to rotate the arm in. Defaults to 0.5.
+        increment (float, optional): Moves the arm in increments of this size in degrees. Defaults to 1 degree.
+    """
     delay = seconds / (abs(angle - s.angle) / increment)
     delta = increment if s.angle < angle else -increment
     cap = min if s.angle < angle else max
