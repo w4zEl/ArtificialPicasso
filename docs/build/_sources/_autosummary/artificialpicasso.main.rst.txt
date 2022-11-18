@@ -12,11 +12,12 @@ artificialpicasso.main
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree:
    
-      lightsCameraAction
+      lights_camera_action
       stopWebcamStream
       takePicture
-      webcamStream
+      webcam_stream
    
    
 

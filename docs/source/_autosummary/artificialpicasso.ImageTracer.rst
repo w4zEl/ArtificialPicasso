@@ -12,6 +12,7 @@ artificialpicasso.ImageTracer
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree:
    
       run
    
