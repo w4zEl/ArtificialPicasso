@@ -19,6 +19,14 @@ makeServo = lambda channel: servo.Servo(pca.channels[channel], min_pulse=min_pul
 
 
 def rotate(s: servo, angle: float, ms: float, increment: float = 1) -> None:
+    """Rotates the given servo to the desired angle in the desired amount of time.
+
+    Args:
+        s (Servo): The servo to rotate 
+        angle (float): The angle in degrees to rotate. 0 <= angle <= 180
+        seconds (float, optional): Time in seconds to rotate the arm in. Defaults to 0.5.
+        increment (float, optional): Moves the arm in increments of this size in degrees. Defaults to 1 degree.
+    """
     delay = ms / (abs(angle - s.angle) / increment)
     print(delay)
     delta = increment if s.angle < angle else -increment
@@ -30,5 +38,6 @@ def rotate(s: servo, angle: float, ms: float, increment: float = 1) -> None:
 
 
 def stop():
+    """Resets the servos and exits"""
     pca.deinit()
     exit()
