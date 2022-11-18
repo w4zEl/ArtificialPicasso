@@ -12,6 +12,7 @@ artificialpicasso.mathutils
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree:
    
       between
       cosine_law

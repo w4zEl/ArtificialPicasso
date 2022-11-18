@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="artificialpicasso.arm" href="artificialpicasso.arm.html" /><link rel="prev" title="artificialpicasso.ServoTestTemplate" href="artificialpicasso.ServoTestTemplate.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="artificialpicasso.StrokeExtractor.getStrokes" href="artificialpicasso.StrokeExtractor.getStrokes.html" /><link rel="prev" title="artificialpicasso.ServoTestTemplate.stop" href="artificialpicasso.ServoTestTemplate.stop.html" />
 
     <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>artificialpicasso.StrokeExtractor - Artificial Picasso 0.1.1 documentation</title>
@@ -156,15 +156,54 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 current has-children"><a class="reference internal" href="artificialpicasso.html">artificialpicasso</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.ArmTestTemplate.html">artificialpicasso.ArmTestTemplate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.ImageTracer.html">artificialpicasso.ImageTracer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.ServoTestTemplate.html">artificialpicasso.ServoTestTemplate</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">artificialpicasso.StrokeExtractor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.arm.html">artificialpicasso.arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.imgutils.html">artificialpicasso.imgutils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.main.html">artificialpicasso.main</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.mathutils.html">artificialpicasso.mathutils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artificialpicasso.servo_utils.html">artificialpicasso.servo_utils</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.ArmTestTemplate.html">artificialpicasso.ArmTestTemplate</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.ArmTestTemplate.move_to_paper_coords.html">artificialpicasso.ArmTestTemplate.move_to_paper_coords</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.ImageTracer.html">artificialpicasso.ImageTracer</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.ImageTracer.run.html">artificialpicasso.ImageTracer.run</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.ServoTestTemplate.html">artificialpicasso.ServoTestTemplate</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.ServoTestTemplate.makeServo.html">artificialpicasso.ServoTestTemplate.makeServo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.ServoTestTemplate.rotate.html">artificialpicasso.ServoTestTemplate.rotate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.ServoTestTemplate.stop.html">artificialpicasso.ServoTestTemplate.stop</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">artificialpicasso.StrokeExtractor</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.StrokeExtractor.getStrokes.html">artificialpicasso.StrokeExtractor.getStrokes</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.arm.html">artificialpicasso.arm</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.arm.ArmController.html">artificialpicasso.arm.ArmController</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.imgutils.html">artificialpicasso.imgutils</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.imgutils.filled_image.html">artificialpicasso.imgutils.filled_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.imgutils.white_image.html">artificialpicasso.imgutils.white_image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.main.html">artificialpicasso.main</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.main.lights_camera_action.html">artificialpicasso.main.lights_camera_action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.main.stopWebcamStream.html">artificialpicasso.main.stopWebcamStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.main.takePicture.html">artificialpicasso.main.takePicture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.main.webcam_stream.html">artificialpicasso.main.webcam_stream</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.mathutils.html">artificialpicasso.mathutils</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.mathutils.between.html">artificialpicasso.mathutils.between</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.mathutils.cosine_law.html">artificialpicasso.mathutils.cosine_law</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.mathutils.cosine_law_find_angle.html">artificialpicasso.mathutils.cosine_law_find_angle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.mathutils.cosine_law_find_side.html">artificialpicasso.mathutils.cosine_law_find_side</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="artificialpicasso.servo_utils.html">artificialpicasso.servo_utils</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.servo_utils.cleanup.html">artificialpicasso.servo_utils.cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.servo_utils.make_servo.html">artificialpicasso.servo_utils.make_servo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.servo_utils.rotate.html">artificialpicasso.servo_utils.rotate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artificialpicasso.servo_utils.rotate2.html">artificialpicasso.servo_utils.rotate2</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -207,7 +246,7 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStrokes</span></code>(image)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="artificialpicasso.StrokeExtractor.getStrokes.html#artificialpicasso.StrokeExtractor.getStrokes" title="artificialpicasso.StrokeExtractor.getStrokes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStrokes</span></code></a>(image)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -220,23 +259,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="artificialpicasso.arm.html">
+          <a class="next-page" href="artificialpicasso.StrokeExtractor.getStrokes.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">artificialpicasso.arm</div>
+                <div class="title">artificialpicasso.StrokeExtractor.getStrokes</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="artificialpicasso.ServoTestTemplate.html">
+          <a class="prev-page" href="artificialpicasso.ServoTestTemplate.stop.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">artificialpicasso.ServoTestTemplate</div>
+                <div class="title">artificialpicasso.ServoTestTemplate.stop</div>
                 
               </div>
             </a>

@@ -12,6 +12,7 @@ artificialpicasso.servo\_utils
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree:
    
       cleanup
       make_servo

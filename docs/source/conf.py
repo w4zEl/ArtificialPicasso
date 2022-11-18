@@ -7,7 +7,7 @@ copyright = '2022, Howard Ou, Amruth Arunkumar, Adib Raed, Max Lu, Jason Cheng'
 author = 'Howard Ou, Amruth Arunkumar, Adib Raed, Max Lu, Jason Cheng'
 release = '0.1.1'
 
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary', 'sphinx.ext.napoleon']
 
 autosummary_generate = True
 autodoc_mock_imports = ["board", "adafruit_motor", "adafruit_pca9685"]

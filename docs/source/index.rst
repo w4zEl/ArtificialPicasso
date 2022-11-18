@@ -3,6 +3,7 @@ Welcome to Artificial Picasso's documentation!
 
 .. autosummary::
    :toctree: _autosummary
+   :template: custom-module.rst
    :recursive:
 
     artificialpicasso

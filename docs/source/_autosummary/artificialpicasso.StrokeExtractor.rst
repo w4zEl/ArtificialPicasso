@@ -12,6 +12,7 @@ artificialpicasso.StrokeExtractor
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree:
    
       getStrokes
    
