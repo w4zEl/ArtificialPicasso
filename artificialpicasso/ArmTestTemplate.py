@@ -1,3 +1,7 @@
+"""
+Convenient template for testing arm movements. In interactive mode, DO NOT stop the program with Ctrl + Z;
+otherwise, the arm will not reset to the default positions properly. Use Ctrl + D or exit() instead.
+"""
 from arm import ArmController
 from servo_utils import make_servo
 import time
@@ -10,3 +14,7 @@ paper_height = 21.3
 controller = ArmController(arm1len=20, arm2len=22.3, arm1servo=make_servo(5), arm2servo=make_servo(0),
                            tip_servo=make_servo(1))
 atexit.register(controller.reset_positions)
+
+
+def move_to_paper_coords(x: float, y: float, *rest) -> None:
+    controller.move_to(x + paper_delta_x, y + paper_delta_y, *rest)
