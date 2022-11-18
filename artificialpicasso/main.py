@@ -42,11 +42,11 @@ def takePicture():
     canvas = tk.Canvas(window, width=frame.shape[1], height=frame.shape[0])
     canvas.create_image(0, 0, anchor=tk.NW, image=webcam.imgtk)
     canvas.grid(row=1)
-    p1: tuple
-    p2: tuple
+    p1: tuple | None = None
+    p2: tuple | None = None
     crop_box_id = None
     has_rect = False
-    move_start: tuple
+    move_start: tuple | None = None
 
     def mouse_down(event):
         nonlocal p1, has_rect, move_start
