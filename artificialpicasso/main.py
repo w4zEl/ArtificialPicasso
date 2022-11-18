@@ -8,7 +8,7 @@ from mathutils import between
 isCameraOn = False
 
 
-def lightsCameraAction():
+def lights_camera_action():
     global cam, isCameraOn
     cam = cv2.VideoCapture(0)
     isCameraOn = True
@@ -135,5 +135,5 @@ if __name__ == '__main__':
     webcam.grid()
     btnPicture = tk.Button(window, width=20, text="Take Picture", font="none 12", command=takePicture)
     btnPicture.grid()
-    lightsCameraAction()
+    lights_camera_action()
     root.mainloop()
