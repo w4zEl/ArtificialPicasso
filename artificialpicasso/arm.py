@@ -2,6 +2,7 @@ from adafruit_motor.servo import Servo
 import math
 import mathutils
 from servo_utils import rotate, rotate2
+import time
 
 
 class ArmController:
@@ -22,9 +23,9 @@ class ArmController:
         if exc_type:
             print(exc_type, exc_val, exc_tb)
 
-    def get_angles(self, x: float, y: float) -> None:
+    def get_angles(self, x: float, y: float) -> tuple[float, float]:
         dist = math.hypot(x, y)
-        angle1 = math.degrees(math.atan2(y,-x)) - mathutils.cosine_law_find_angle(self.arm1len, dist, self.arm2len)
+        angle1 = math.degrees(math.atan2(y, -x)) - mathutils.cosine_law_find_angle(self.arm1len, dist, self.arm2len)
         angle2 = 180 - mathutils.cosine_law_find_angle(self.arm1len, self.arm2len, dist)
         return angle1, angle2
 
@@ -39,6 +40,8 @@ class ArmController:
         self.tip_servo.angle = 160
 
     def reset_positions(self):
+        self.lift_tip()
         rotate(self.arm2servo, 90)
         rotate(self.arm1servo, 90)
-        rotate(self.tip_servo, 180)
+        time.sleep(0.2)
+        self.drop_tip()
