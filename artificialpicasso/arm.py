@@ -1,7 +1,7 @@
 from adafruit_motor.servo import Servo
 import math
 import mathutils
-from servo_utils import rotate
+from servo_utils import rotate, rotate2
 
 
 class ArmController:
@@ -31,8 +31,7 @@ class ArmController:
 
     def move_to(self, x: float, y: float, seconds: float = 0.5) -> None:
         angle1, angle2 = self.get_angles(x, y)
-        rotate(self.arm1servo, angle1, seconds)
-        rotate(self.arm2servo, angle2, seconds)
+        rotate2(self.arm1servo, angle1, self.arm2servo, angle2, seconds)
 
     def drop_tip(self) -> None:
         self.tip_servo.angle = 180
