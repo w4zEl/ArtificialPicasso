@@ -7,7 +7,7 @@ def getStrokes(image):
     in Open CV to generate the strokes of the image. 
 
     Args:
-        image (ndarray): A 3-d list of pixels that represent an image
+        image (np.ndarray): A 3-d list of pixels that represent an image
 
     Returns:
         _type_: Returns a list of all the strokes of the image
