@@ -22,11 +22,10 @@ class ArmController:
         if exc_type:
             print(exc_type, exc_val, exc_tb)
 
-    def get_angles(self, x: float, y: float):
+    def get_angles(self, x: float, y: float) -> None:
         dist = math.hypot(x, y)
+        angle1 = math.degrees(math.atan2(y,-x)) - mathutils.cosine_law_find_angle(self.arm1len, dist, self.arm2len)
         angle2 = 180 - mathutils.cosine_law_find_angle(self.arm1len, self.arm2len, dist)
-        angle1 = 180 - math.degrees(math.atan2(y, x)) - mathutils.cosine_law_find_angle(dist, self.arm1len,
-                                                                                        self.arm2len)
         return angle1, angle2
 
     def move_to(self, x: float, y: float, seconds: float = 0.5) -> None:
