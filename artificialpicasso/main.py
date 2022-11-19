@@ -9,6 +9,9 @@ isCameraOn = False
 
 
 def lights_camera_action():
+    """
+    Sets up connection to the webcam and starts showing the webcam feed in the tkinter window.
+    """
     global cam, isCameraOn
     cam = cv2.VideoCapture(0)
     isCameraOn = True
@@ -16,6 +19,9 @@ def lights_camera_action():
 
 
 def webcam_stream():
+    """
+    Shows the webcam feed in the tkinter window.
+    """
     global frame, isCameraOn
     if isCameraOn:
         _, frame = cam.read()
@@ -28,11 +34,17 @@ def webcam_stream():
 
 
 def stopWebcamStream():
+    """
+    Stops webcam stream.
+    """
     global isCameraOn, root
     isCameraOn = False
     cam.release()
 
 def takePicture():
+    """
+    Stops the webcam stream and opens the cropping GUI on the last frame from the webcam feed.
+    """
     global frame
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     cv2.imwrite(f"../output_images/image_{now}.jpg", frame)
@@ -49,6 +61,9 @@ def takePicture():
     move_start: tuple | None = None
 
     def mouse_down(event):
+        """
+        Handles the mouse being pressed down.
+        """
         nonlocal p1, has_rect, move_start
         if has_rect and between(p1[0], p2[0], event.x) and between(p1[1], p2[1], event.y):
             move_start = event.x, event.y
@@ -58,6 +73,9 @@ def takePicture():
             p1 = event.x, event.y
 
     def update_rect():
+        """
+        Updates the rectangle being drawn to screen.
+        """
         nonlocal p1, p2, crop_box_id
         if p1 and p2:
             if crop_box_id:
@@ -66,6 +84,9 @@ def takePicture():
                 crop_box_id = canvas.create_rectangle(*p1, *p2, width=1)
 
     def mouse_move(event):
+        """
+        Updates the rectangle being drawn to screen as the mouse moves.
+        """
         nonlocal p1, p2, has_rect, move_start
         if has_rect:
             dx, dy = event.x - move_start[0], event.y - move_start[1]
@@ -77,12 +98,18 @@ def takePicture():
         update_rect()
 
     def mouse_up(event):
+        """
+        Handles the mouse being released.
+        """
         nonlocal p2, has_rect
         if not has_rect:
             p2 = event.x, event.y
             has_rect = True
 
     def reset_rect(event=None):
+        """
+        Resets the rectangle on screen.
+        """
         nonlocal p1, p2, has_rect, crop_box_id
         p1 = p2 = None
         has_rect = False
@@ -96,6 +123,11 @@ def takePicture():
     webcam.destroy()
 
     def doTrace():
+        """
+        Opens a window with the options to edit the minimum stroke length and the animation speed. 
+        
+        Once the "run" button is clicked, the image opens up in a new window and an animation plays where all the edges are traced.
+        """
         global frame
         window.destroy()
         root.unbind('<Escape>')
