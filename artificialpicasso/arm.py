@@ -10,13 +10,14 @@ class ArmController:
         """Initializes all the different components of the robot, as well as their positions. 
 
         The default position of the arms are them perpendicular to each other and the base.
-        The default position of the tip_servo connects the pen to the paper.  
+        The default position of the tip_servo connects the pen to the paper.
+
         Args:
-            arm1len (float): The first arm of the robot
-            arm2len (float): The second arm of the robot
-            arm1servo (Servo): The servo connected to arm1
-            arm2servo (Servo): The servo connected to arm2
-            tip_servo (Servo): The servo connected to the pen
+            arm1len: The first arm of the robot
+            arm2len: The second arm of the robot
+            arm1servo: The servo connected to arm1
+            arm2servo: The servo connected to arm2
+            tip_servo: The servo connected to the pen
         """
         self.arm1len = arm1len
         self.arm2len = arm2len
@@ -34,9 +35,9 @@ class ArmController:
         either after completion of execution or in the event of an exception. 
 
         Args:
-            exc_type (_type_): Type of the exception that occured
-            exc_val (_type_): Value of the exception that occured
-            exc_tb (_type_): Traceback of the exception that occured
+            exc_type: Type of the exception that occurred
+            exc_val: Value of the exception that occurred
+            exc_tb: Traceback of the exception that occurred
         """
         self.reset_positions()
         if exc_type:
@@ -47,11 +48,11 @@ class ArmController:
         need to make in order to move to that position.
 
         Args:
-            x (float): The x coordinate of the target location
-            y (float): The x coordinate of the target location
+            x: The x coordinate of the target location
+            y: The x coordinate of the target location
 
         Returns:
-            tuple[float, float]: The angles made by arm1 and arm2 respectively 
+            The angles made by arm1 and arm2, respectively.
         """
         dist = math.hypot(x, y)
         angle1 = math.degrees(math.atan2(y, -x)) - mathutils.cosine_law_find_angle(self.arm1len, dist, self.arm2len)
@@ -63,9 +64,9 @@ class ArmController:
         to the desired coordinate within that exact time frame.
 
         Args:
-            x (float): The x coordinate of the target location (Left is positive)
-            y (float): The y coordinate of the target location (Up is positive)
-            seconds (float, optional): The time taken to get to the location. Defaults to 0.5.
+            x: The x coordinate of the target location (Left is positive)
+            y: The y coordinate of the target location (Up is positive)
+            seconds: The time taken to get to the location.
         """
         angle1, angle2 = self.get_angles(x, y)
         rotate2(self.arm1servo, angle1, self.arm2servo, angle2, seconds)
