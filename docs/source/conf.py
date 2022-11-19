@@ -18,6 +18,7 @@ intersphinx_mapping = {
 napoleon_use_param = True
 autosummary_generate = True
 autodoc_mock_imports = ["board", "adafruit_motor", "adafruit_pca9685"]
+typehints_defaults = 'comma'
 
 templates_path = ['_templates']
 exclude_patterns = []
