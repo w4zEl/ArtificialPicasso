@@ -242,9 +242,11 @@
         <article role="main">
           <section id="module-artificialpicasso.ServoTestTemplate">
 <span id="artificialpicasso-servotesttemplate"></span><h1>artificialpicasso.ServoTestTemplate<a class="headerlink" href="#module-artificialpicasso.ServoTestTemplate" title="Permalink to this heading">#</a></h1>
-<p>Used for quick interactive servo testing on the Raspberry Pi with I2C PCA9685
-e.g. by running:</p>
-<p>python -i ServoTestTemplate.py</p>
+<p>Used for quick interactive servo testing on the Raspberry Pi with I2C PCA9685.</p>
+<p>For example, by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">i</span> <span class="n">ServoTestTemplate</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
 <p class="rubric">Functions</p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
@@ -256,7 +258,7 @@ e.g. by running:</p>
 <td><p>Rotates the given servo to the desired angle in the desired amount of time.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="artificialpicasso.ServoTestTemplate.stop.html#artificialpicasso.ServoTestTemplate.stop" title="artificialpicasso.ServoTestTemplate.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop</span></code></a>()</p></td>
-<td><p>Resets the servos and exits</p></td>
+<td><p>Releases usage of the PCA and exits</p></td>
 </tr>
 </tbody>
 </table>

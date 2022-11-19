@@ -240,10 +240,13 @@
         <article role="main">
           <h1>Source code for artificialpicasso.ServoTestTemplate</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Used for quick interactive servo testing on the Raspberry Pi with I2C PCA9685</span>
-<span class="sd">e.g. by running:</span>
+<span class="sd">Used for quick interactive servo testing on the Raspberry Pi with I2C PCA9685.</span>
 
-<span class="sd">python -i ServoTestTemplate.py</span>
+<span class="sd">For example, by running:</span>
+
+<span class="sd">.. code-block::</span>
+
+<span class="sd">    python -i ServoTestTemplate.py</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
@@ -259,14 +262,14 @@
 <span class="n">makeServo</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">channel</span><span class="p">:</span> <span class="n">servo</span><span class="o">.</span><span class="n">Servo</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">],</span> <span class="n">min_pulse</span><span class="o">=</span><span class="n">min_pulse</span><span class="p">,</span> <span class="n">max_pulse</span><span class="o">=</span><span class="n">max_pulse</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="rotate"><a class="viewcode-back" href="../../_autosummary/artificialpicasso.ServoTestTemplate.rotate.html#artificialpicasso.ServoTestTemplate.rotate">[docs]</a><span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">servo</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ms</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">increment</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="rotate"><a class="viewcode-back" href="../../_autosummary/artificialpicasso.ServoTestTemplate.rotate.html#artificialpicasso.ServoTestTemplate.rotate">[docs]</a><span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">servo</span><span class="o">.</span><span class="n">Servo</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ms</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">increment</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Rotates the given servo to the desired angle in the desired amount of time.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        s (Servo): The servo to rotate </span>
-<span class="sd">        angle (float): The angle in degrees to rotate. 0 &lt;= angle &lt;= 180</span>
-<span class="sd">        seconds (float, optional): Time in seconds to rotate the arm in. Defaults to 0.5.</span>
-<span class="sd">        increment (float, optional): Moves the arm in increments of this size in degrees. Defaults to 1 degree.</span>
+<span class="sd">        s: The servo to rotate</span>
+<span class="sd">        angle: The angle in degrees to rotate. 0 &lt;= angle &lt;= 180</span>
+<span class="sd">        ms: Time in milliseconds to rotate the arm in.</span>
+<span class="sd">        increment: Moves the arm in increments of this size in degrees. Defaults to 1 degree.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">delay</span> <span class="o">=</span> <span class="n">ms</span> <span class="o">/</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">angle</span> <span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span> <span class="o">/</span> <span class="n">increment</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
@@ -279,7 +282,7 @@
 
 
 <div class="viewcode-block" id="stop"><a class="viewcode-back" href="../../_autosummary/artificialpicasso.ServoTestTemplate.stop.html#artificialpicasso.ServoTestTemplate.stop">[docs]</a><span class="k">def</span> <span class="nf">stop</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Resets the servos and exits&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Releases usage of the PCA and exits&quot;&quot;&quot;</span>
     <span class="n">pca</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
     <span class="n">exit</span><span class="p">()</span></div>
 </pre></div>
