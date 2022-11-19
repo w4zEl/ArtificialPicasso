@@ -13,7 +13,8 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary', 'sphinx.ext.napole
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
-    'adafruit_motor': ('https://docs.circuitpython.org/projects/motor/en/stable/', None)
+    'adafruit_motor': ('https://docs.circuitpython.org/projects/motor/en/stable/', None),
+    'numpy': ('https://numpy.org/doc/stable/', None)
 }
 napoleon_use_param = True
 autosummary_generate = True
