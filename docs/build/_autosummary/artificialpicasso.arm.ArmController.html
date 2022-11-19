@@ -244,24 +244,25 @@
 <h1>artificialpicasso.arm.ArmController<a class="headerlink" href="#artificialpicasso-arm-armcontroller" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="artificialpicasso.arm.ArmController">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artificialpicasso.arm.</span></span><span class="sig-name descname"><span class="pre">ArmController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1servo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">adafruit_motor.servo.Servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2servo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">adafruit_motor.servo.Servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_servo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">adafruit_motor.servo.Servo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#artificialpicasso.arm.ArmController" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">artificialpicasso.arm.</span></span><span class="sig-name descname"><span class="pre">ArmController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_servo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artificialpicasso/arm.html#ArmController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artificialpicasso.arm.ArmController" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="artificialpicasso.arm.ArmController.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1servo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">adafruit_motor.servo.Servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2servo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">adafruit_motor.servo.Servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_servo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">adafruit_motor.servo.Servo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#artificialpicasso.arm.ArmController.__init__" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm1servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm2servo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_servo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artificialpicasso/arm.html#ArmController.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artificialpicasso.arm.ArmController.__init__" title="Permalink to this definition">#</a></dt>
 <dd><p>Initializes all the different components of the robot, as well as their positions.</p>
 <p>The default position of the arms are them perpendicular to each other and the base.
-The default position of the tip_servo connects the pen to the paper.
-:param arm1len: The first arm of the robot
-:type arm1len: float
-:param arm2len: The second arm of the robot
-:type arm2len: float
-:param arm1servo: The servo connected to arm1
-:type arm1servo: Servo
-:param arm2servo: The servo connected to arm2
-:type arm2servo: Servo
-:param tip_servo: The servo connected to the pen
-:type tip_servo: Servo</p>
+The default position of the tip_servo connects the pen to the paper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm1len</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The first arm of the robot</p></li>
+<li><p><strong>arm2len</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The second arm of the robot</p></li>
+<li><p><strong>arm1servo</strong> (<a class="reference external" href="https://docs.circuitpython.org/projects/motor/en/stable/api.html#adafruit_motor.servo.Servo" title="(in Adafruit motor Library v1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Servo</span></code></a>) – The servo connected to arm1</p></li>
+<li><p><strong>arm2servo</strong> (<a class="reference external" href="https://docs.circuitpython.org/projects/motor/en/stable/api.html#adafruit_motor.servo.Servo" title="(in Adafruit motor Library v1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Servo</span></code></a>) – The servo connected to arm2</p></li>
+<li><p><strong>tip_servo</strong> (<a class="reference external" href="https://docs.circuitpython.org/projects/motor/en/stable/api.html#adafruit_motor.servo.Servo" title="(in Adafruit motor Library v1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Servo</span></code></a>) – The servo connected to the pen</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -291,56 +292,69 @@ The default position of the tip_servo connects the pen to the paper.
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="artificialpicasso.arm.ArmController.drop_tip">
-<span class="sig-name descname"><span class="pre">drop_tip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#artificialpicasso.arm.ArmController.drop_tip" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">drop_tip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artificialpicasso/arm.html#ArmController.drop_tip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artificialpicasso.arm.ArmController.drop_tip" title="Permalink to this definition">#</a></dt>
 <dd><p>Drops the tip of the pen onto the page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="artificialpicasso.arm.ArmController.get_angles">
-<span class="sig-name descname"><span class="pre">get_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#artificialpicasso.arm.ArmController.get_angles" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artificialpicasso/arm.html#ArmController.get_angles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artificialpicasso.arm.ArmController.get_angles" title="Permalink to this definition">#</a></dt>
 <dd><p>Given a (x, y) coordinate, find the two angles that the robotic arms
 need to make in order to move to that position.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>float</em>) – The x coordinate of the target location</p></li>
-<li><p><strong>y</strong> (<em>float</em>) – The x coordinate of the target location</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The x coordinate of the target location</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The x coordinate of the target location</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The angles made by arm1 and arm2 respectively</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple[float, float]</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The angles made by arm1 and arm2, respectively.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="artificialpicasso.arm.ArmController.lift_tip">
-<span class="sig-name descname"><span class="pre">lift_tip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#artificialpicasso.arm.ArmController.lift_tip" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">lift_tip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artificialpicasso/arm.html#ArmController.lift_tip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artificialpicasso.arm.ArmController.lift_tip" title="Permalink to this definition">#</a></dt>
 <dd><p>Lifts the tip of the pen from the page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="artificialpicasso.arm.ArmController.move_to">
-<span class="sig-name descname"><span class="pre">move_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#artificialpicasso.arm.ArmController.move_to" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">move_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artificialpicasso/arm.html#ArmController.move_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artificialpicasso.arm.ArmController.move_to" title="Permalink to this definition">#</a></dt>
 <dd><p>Given a (x, y) coordinate and a specified time, moves the robotic arm
 to the desired coordinate within that exact time frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>float</em>) – The x coordinate of the target location (Left is positive)</p></li>
-<li><p><strong>y</strong> (<em>float</em>) – The y coordinate of the target location (Up is positive)</p></li>
-<li><p><strong>seconds</strong> (<em>float</em><em>, </em><em>optional</em>) – The time taken to get to the location. Defaults to 0.5.</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The x coordinate of the target location (Left is positive)</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The y coordinate of the target location (Up is positive)</p></li>
+<li><p><strong>seconds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">0.5</span></code>) – The time taken to get to the location.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="artificialpicasso.arm.ArmController.reset_positions">
-<span class="sig-name descname"><span class="pre">reset_positions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#artificialpicasso.arm.ArmController.reset_positions" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reset_positions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/artificialpicasso/arm.html#ArmController.reset_positions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#artificialpicasso.arm.ArmController.reset_positions" title="Permalink to this definition">#</a></dt>
 <dd><p>Resets the positions of all the servos to their default position.
 The default position is both the arms perpendicular to each other and the base.
 The default position of the tip_servo connects the pen to the paper.</p>
