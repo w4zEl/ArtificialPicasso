@@ -7,7 +7,9 @@
 
 ![](docs/media/GroupPhoto.jpg)
 
-Hello! We are Mahjong, a small group of software engineering students at the University of Waterloo passionate about the integration of technology and art. *The Artificial Picasso* is a robot that sketches out a physical drawing based on an image. Our end goal for this project is to have a working robot arm that will take a photograph taken by our raspberry pi's webcam and draw the image on paper. 
+Hello! We are Mahjong, a small group of software engineering students at the University of Waterloo passionate about the integration of technology and art.
+
+We bring to you *The Artificial Picasso*: a robot that sketches out a physical drawing based on an image or a picture taken from a camera.
 
 ![](https://i.imgur.com/iBhZ0Kr.jpg)
 
@@ -46,15 +48,18 @@ Jason Cheng - [jcheng3927](https://github.com/jcheng3927)
 
 5. Take a picture and see the animated tracing. Enjoy!
 
-# **🥁 Prequisites**
-- A computer
-- Python 3
+# 🧰 Hardware
+
+- Raspberry Pi
+- PCA9685
+- MG90S Servos
+- And more...
 
 # **🍎 Built With**
-Love and tears
+Love, sweat, and tears
 
 # **🎹 License**
-Distributed under the [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html). See LICENSE for more information.
+Distributed under the [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html). See [LICENSE](LICENSE) for more information.
 
 **Mahjong**
 ![](https://i.imgur.com/tAhE9eP.jpeg)
