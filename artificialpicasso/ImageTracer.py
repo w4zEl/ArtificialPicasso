@@ -3,8 +3,8 @@ import StrokeExtractor
 import imgutils
 
 
-def run(image, strokeminlength=50, speed=99):
-    strokes = StrokeExtractor.getStrokes(image)
+def run(image, strokeminlength=50, speed=99, edgeSensitivity = 5):
+    strokes = StrokeExtractor.getStrokes(image, edgeSensitivity)
 
     height, width, channels = image.shape
     font = cv2.FONT_HERSHEY_SIMPLEX

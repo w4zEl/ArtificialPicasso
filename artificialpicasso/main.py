@@ -140,18 +140,22 @@ def takePicture():
         titleLabel = tk.Label(root, text="Image Tracer")
         titleLabel.config(font=("Arial", 15))
         titleLabel.pack(pady=(10, 0))
-
-        tk.Label(root, text="Minimum stroke length").pack(pady=(10, 0))
-        minStrokeLengthSlider = tk.Scale(root, from_=0, to=1000, length=250, orient='horizontal')
+        tk.Label(root, text="Minimum Stroke Length").pack(pady=(10, 0))
+        minStrokeLengthSlider = tk.Scale(root, from_=0, to=100, length=250, orient='horizontal')
         minStrokeLengthSlider.set(50)
         minStrokeLengthSlider.pack()
-        tk.Label(root, text="Animation speed").pack()
+        # keep animation speed from 0 to 100 and edge detection sensitivity from 0 to 10 since ImageTracer.py
+        tk.Label(root, text="Animation Speed").pack()
         speedSlider = tk.Scale(root, from_=0, to=100, length=250, orient='horizontal')
         speedSlider.set(100)
         speedSlider.pack()
+        tk.Label(root, text="Edge Detection Sensitivity").pack()
+        edgeSlider = tk.Scale(root, from_=0, to=10, length=250, orient='horizontal')
+        edgeSlider.set(5)
+        edgeSlider.pack()
         tk.Button(root, text='Run', command=lambda: cv2.imwrite(f'../output_images/trace_{now}.jpg',
                                                                 ImageTracer.run(frame, minStrokeLengthSlider.get(),
-                                                                                speedSlider.get())),
+                                                                                speedSlider.get(), edgeSlider.get())),
                   width=10).pack(pady=(20, 20))
         tk.Label(root, text="Press Q to stop animation").pack()
 
