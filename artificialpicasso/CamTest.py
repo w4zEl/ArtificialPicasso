@@ -17,5 +17,5 @@ if __name__ == '__main__':
             logger.warning('Unable to read frame from camera')
             exit(1)
         cv2.imshow('Camera', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(1) == ord('q'):
             break
