@@ -8,6 +8,7 @@ cam = cv2.VideoCapture(0)
 if not cam.isOpened():
     print('Camera could not be opened')
     exit(1)
+cv2.namedWindow('Camera', cv2.WINDOW_NORMAL)
 while 1:
     ret, frame = cam.read()
     if not ret:
