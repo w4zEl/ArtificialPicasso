@@ -4,3 +4,4 @@ numpy~=1.23.4
 adafruit-circuitpython-motor~=3.4.5
 adafruit-circuitpython-pca9685~=3.4.6
 sympy~=1.11.1
+loguru~=0.6.0
