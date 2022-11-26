@@ -34,7 +34,7 @@ def run(image, strokeminlength=50, speed=99):
                     cv2.circle(trace_img, (x, y), 2, (255, 0, 0), 1)
                     cv2.imshow('image', image)
 
-                    if animate and cv2.waitKey(speed) & 0xFF == ord('q'):
+                    if animate and cv2.waitKey(speed) == ord('q'):
                         cv2.destroyAllWindows()
                         stop = True
                         break
