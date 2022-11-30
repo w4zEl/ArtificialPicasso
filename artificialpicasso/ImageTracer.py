@@ -3,12 +3,13 @@ import StrokeExtractor
 import imgutils
 
 
-def run(image, strokeminlength=50, speed=99):
-    strokes = StrokeExtractor.getStrokes(image)
+def run(image, strokeminlength=50, speed=99, edgeSensitivity=5):
+    strokes = StrokeExtractor.getStrokes(image, edgeSensitivity)
 
     height, width, channels = image.shape
     font = cv2.FONT_HERSHEY_SIMPLEX
-    text_width, text_height = cv2.getTextSize('Animation finished', font, 1, 2)[0]
+    text_width, text_height = cv2.getTextSize(
+        'Animation finished', font, 1, 2)[0]
 
     speed = 101 - speed
     animate = True
@@ -34,7 +35,7 @@ def run(image, strokeminlength=50, speed=99):
                     cv2.circle(trace_img, (x, y), 2, (255, 0, 0), 1)
                     cv2.imshow('image', image)
 
-                    if animate and cv2.waitKey(speed) == ord('q'):
+                    if animate and cv2.waitKey(speed) & 0xFF == ord('q'):
                         cv2.destroyAllWindows()
                         stop = True
                         break
