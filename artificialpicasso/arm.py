@@ -69,9 +69,9 @@ class ArmController:
         angle1, angle2 = self.get_angles(x, y)
         rotate2(self.arm1servo, angle1, self.arm2servo, angle2, seconds)
 
-    def move_line(self, x: float, y: float, seconds: float, intervals: int) -> None:
-        xVel = x/(seconds/intervals)
-        yVel = y/(seconds/intervals)
+    def move_line(self, x0: float, y0: float, x: float, y: float, seconds: float, intervals: int) -> None:
+        xVel = (x-x0)/seconds
+        yVel = (y-y0)/seconds
         for i in range(1, intervals):
             rotate2(self.arm1servo, (xVel * math.cos(math.radians(self.arm1servo.angle+self.arm2servo.angle))+yVel*math.sin(math.radians(self.arm1servo.angle+self.arm2servo.angle)))/(self.arm1len*math.sin(math.radians(self.arm2servo.angle)))*seconds/intervals, self.arm2servo, (xVel * (self.arm1len * math.cos(math.radians(self.arm1servo.angle)) + self.arm2len * math.cos(math.radians(self.arm1servo.angle+self.arm2servo.angle)))+yVel * (self.arm1len * math.sin(math.radians(self.arm1servo.angle))+self.arm2len*math.sin(math.radians(self.arm1servo.angle+self.arm2servo.angle))))/(self.arm1len*self.arm2len*math.sin(math.radians(self.arm2servo.angle)))*seconds/intervals, seconds)
             time.sleep(seconds/intervals)
