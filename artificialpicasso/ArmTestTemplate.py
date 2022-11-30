@@ -3,7 +3,7 @@ Convenient template for testing arm movements. In interactive mode, DO NOT stop 
 otherwise, the arm will not reset to the default positions properly. Use Ctrl + D or exit() instead.
 """
 from arm import ArmController
-from servo_utils import make_servo
+from servo_utils import make_servo, make_adjusted_servo
 import time
 import atexit
 
@@ -12,8 +12,8 @@ if __name__ == '__main__':
     paper_delta_x = paper_delta_y = 3.5
     paper_width = 27.6
     paper_height = 21.3
-    controller = ArmController(arm1len=20, arm2len=22.3, arm1servo=make_servo(5), arm2servo=make_servo(0),
-                               tip_servo=make_servo(1))
+    controller = ArmController(arm1len=20, arm2len=22.3, arm1servo=make_adjusted_servo(3, lambda x: 180 - x),
+                               arm2servo=make_servo(1), tip_servo=make_servo(0))
     atexit.register(controller.reset_positions)
 
 
