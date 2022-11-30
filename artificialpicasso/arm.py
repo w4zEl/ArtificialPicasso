@@ -73,8 +73,7 @@ class ArmController:
         xVel = x/(seconds/intervals)
         yVel = y/(seconds/intervals)
         for i in range(1, intervals):
-            rotate (self.arm1servo, (xVel * math.cos(math.radians(self.arm1servo.angle+self.arm2servo.angle))+yVel*math.sin(math.radians(self.arm1servo.angle+self.arm2servo.angle)))/(self.arm1len*math.sin(math.radians(self.arm2servo.angle)))*seconds/intervals)
-            rotate(self.arm2servo, (xVel * (self.arm1len * math.cos(math.radians(self.arm1servo.angle)) + self.arm2len * math.cos(math.radians(self.arm1servo.angle+self.arm2servo.angle)))+yVel * (self.arm1len * math.sin(math.radians(self.arm1servo.angle))+self.arm2len*math.sin(math.radians(self.arm1servo.angle+self.arm2servo.angle))))/(self.arm1len*self.arm2len*math.sin(math.radians(self.arm2servo.angle)))*seconds/intervals)
+            rotate2(self.arm1servo, (xVel * math.cos(math.radians(self.arm1servo.angle+self.arm2servo.angle))+yVel*math.sin(math.radians(self.arm1servo.angle+self.arm2servo.angle)))/(self.arm1len*math.sin(math.radians(self.arm2servo.angle)))*seconds/intervals, self.arm2servo, (xVel * (self.arm1len * math.cos(math.radians(self.arm1servo.angle)) + self.arm2len * math.cos(math.radians(self.arm1servo.angle+self.arm2servo.angle)))+yVel * (self.arm1len * math.sin(math.radians(self.arm1servo.angle))+self.arm2len*math.sin(math.radians(self.arm1servo.angle+self.arm2servo.angle))))/(self.arm1len*self.arm2len*math.sin(math.radians(self.arm2servo.angle)))*seconds/intervals, seconds)
             time.sleep(seconds/intervals)
 
     def drop_tip(self) -> None:
