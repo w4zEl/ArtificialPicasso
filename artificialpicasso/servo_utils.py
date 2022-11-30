@@ -3,6 +3,7 @@ from adafruit_motor.servo import Servo
 import board
 import time
 import atexit
+from typing import Callable, Optional
 
 pca = PCA9685(board.I2C())
 pca.frequency = 50
@@ -13,6 +14,29 @@ def make_servo(channel: int) -> Servo:
     """Initialize the servos
     """
     return Servo(pca.channels[channel], min_pulse=min_pulse, max_pulse=max_pulse)
+
+
+def make_adjusted_servo(channel: int, convert_angle: Callable[[float], float],
+                        reverse_convert: Callable[[float], float] = None) -> Servo:
+    reverse_convert = reverse_convert or convert_angle
+    return ServoWrapper(pca.channels[channel], min_pulse=min_pulse, max_pulse=max_pulse,
+                        convert_angle=convert_angle, reverse_convert=reverse_convert)
+
+
+class ServoWrapper(Servo):
+    def __init__(self, *args, **kwargs):
+        self.convert_angle = kwargs.pop('convert_angle')
+        self.reverse_convert = kwargs.pop('reverse_convert')
+        super().__init__(*args, **kwargs)
+
+    @property
+    def angle(self) -> Optional[float]:
+        a = super().angle
+        return self.reverse_convert(a) if a else a
+
+    @angle.setter
+    def angle(self, new_angle: Optional[int]) -> None:
+        super(__class__, self.__class__).angle.__set__(self, self.convert_angle(new_angle) if new_angle else new_angle)
 
 
 @atexit.register
