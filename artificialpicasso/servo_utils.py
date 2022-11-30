@@ -41,6 +41,11 @@ def rotate2(servo1: Servo, angle1: float, servo2: Servo, angle2: float, seconds:
     """
     Rotate two servos simultaneously to reach the desired angle for each in the same amount of time
     """
+    if seconds < 0:
+        raise ValueError("seconds cannot be negative")
+    if seconds == 0:
+        servo1.angle, servo2.angle = angle1, angle2
+        return
     if abs(servo1.angle - angle1) < abs(servo2.angle - angle2):
         servo1, angle1, servo2, angle2 = servo2, angle2, servo1, angle1
     rotations = abs(servo1.angle - angle1)
@@ -51,6 +56,7 @@ def rotate2(servo1: Servo, angle1: float, servo2: Servo, angle2: float, seconds:
 
     def increment(angle, delta, target):
         return angle + delta if angle + delta < target else angle - delta if angle - delta > target else target
+
     while abs(servo1.angle - angle1) > .5:
         servo1.angle = curr_angle1 = increment(curr_angle1, 1, angle1)
         servo2.angle = curr_angle2 = increment(curr_angle2, increment2, angle2)
