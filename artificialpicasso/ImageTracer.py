@@ -3,12 +3,13 @@ import StrokeExtractor
 import imgutils
 
 
-def run(image, strokeminlength=50, speed=99, edgeSensitivity = 5):
+def run(image, strokeminlength=50, speed=99, edgeSensitivity=5):
     strokes = StrokeExtractor.getStrokes(image, edgeSensitivity)
 
     height, width, channels = image.shape
     font = cv2.FONT_HERSHEY_SIMPLEX
-    text_width, text_height = cv2.getTextSize('Animation finished', font, 1, 2)[0]
+    text_width, text_height = cv2.getTextSize(
+        'Animation finished', font, 1, 2)[0]
 
     speed = 101 - speed
     animate = True

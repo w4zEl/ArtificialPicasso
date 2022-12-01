@@ -40,8 +40,6 @@ class ArmController:
             exc_tb: Traceback of the exception that occurred
         """
         self.reset_positions()
-        if exc_type:
-            print(exc_type, exc_val, exc_tb)
 
     def get_angles(self, x: float, y: float) -> tuple[float, float]:
         """Given a (x, y) coordinate, find the two angles that the robotic arms 
