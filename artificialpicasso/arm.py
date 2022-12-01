@@ -1,12 +1,14 @@
 from adafruit_motor.servo import Servo
 import math
 import mathutils
-from servo_utils import rotate, rotate2
+from servo_utils import rotate, rotate2, safe_rotate, increment
 import time
+from dataclasses import dataclass
 
 
 class ArmController:
-    def __init__(self, *, arm1len: float, arm2len: float, arm1servo: Servo, arm2servo: Servo, tip_servo: Servo):
+    def __init__(self, *, arm1len: float, arm2len: float, arm1servo: Servo, arm2servo: Servo, tip_servo: Servo,
+                 autosetpos: bool = True):
         """Initializes all the different components of the robot, as well as their positions. 
 
         The default position of the arms are them perpendicular to each other and the base.
@@ -24,8 +26,10 @@ class ArmController:
         self.arm1servo = arm1servo
         self.arm2servo = arm2servo
         self.tip_servo = tip_servo
-        arm1servo.angle = arm2servo.angle = 90
-        tip_servo.angle = 180
+        self.autosetpos = autosetpos
+        if autosetpos:
+            arm1servo.angle = arm2servo.angle = 90
+            tip_servo.angle = 180
 
     def __enter__(self):
         return self
@@ -69,6 +73,18 @@ class ArmController:
         angle1, angle2 = self.get_angles(x, y)
         rotate2(self.arm1servo, angle1, self.arm2servo, angle2, seconds)
 
+    def line(self, x1: float, y1: float, x2: float, y2: float, segment_len: float = 0.5, drop: bool = True) -> None:
+        self.move_to(x1, y1)
+        if drop:
+            self.drop_tip()
+        dist = math.hypot(x2 - x1, y2 - y1)
+        x, y = x1, y1
+        segments = math.ceil(dist / segment_len)
+        rise = (y2 - y1) / segments
+        run = (x2 - x1) / segments
+        while x != x2:
+            self.move_to(x := increment(x, run, x2), y := increment(y, rise, y2))
+
     def drop_tip(self) -> None:
         """Drops the tip of the pen onto the page.
         """
@@ -84,8 +100,18 @@ class ArmController:
         The default position is both the arms perpendicular to each other and the base.
         The default position of the tip_servo connects the pen to the paper. 
         """
-        self.lift_tip()
-        rotate(self.arm2servo, 90)
-        rotate(self.arm1servo, 90)
-        time.sleep(0.2)
-        self.drop_tip()
+        if self.autosetpos:
+            self.lift_tip()
+            safe_rotate(self.arm2servo, 90)
+            safe_rotate(self.arm1servo, 90)
+            time.sleep(0.2)
+            self.drop_tip()
+
+
+@dataclass
+class Paper:
+    """Value object to store attributes about the paper used for drawing"""
+    delta_x: float
+    delta_y: float
+    width: float
+    height: float
