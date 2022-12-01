@@ -1,6 +1,6 @@
 opencv-python~=4.6.0.66
 Pillow~=9.3.0
-numpy==1.23.5
+numpy~=1.23.5
 adafruit-circuitpython-motor~=3.4.5
 adafruit-circuitpython-pca9685~=3.4.6
 sympy~=1.11.1
