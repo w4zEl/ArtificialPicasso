@@ -18,9 +18,8 @@ def make_servo(channel: int) -> Servo:
 
 def make_adjusted_servo(channel: int, convert_angle: Callable[[float], float],
                         reverse_convert: Callable[[float], float] = None) -> Servo:
-    reverse_convert = reverse_convert or convert_angle
     return ServoWrapper(pca.channels[channel], min_pulse=min_pulse, max_pulse=max_pulse,
-                        convert_angle=convert_angle, reverse_convert=reverse_convert)
+                        convert_angle=convert_angle, reverse_convert=reverse_convert or convert_angle)
 
 
 class ServoWrapper(Servo):
