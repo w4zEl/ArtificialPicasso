@@ -4,6 +4,7 @@ import cv2
 import ImageTracer
 from datetime import datetime
 from mathutils import between
+from typing import Optional
 
 isCameraOn = False
 
@@ -54,11 +55,11 @@ def takePicture():
     canvas = tk.Canvas(window, width=frame.shape[1], height=frame.shape[0])
     canvas.create_image(0, 0, anchor=tk.NW, image=webcam.imgtk)
     canvas.grid(row=1)
-    p1: tuple | None = None
-    p2: tuple | None = None
-    crop_box_id = None
-    has_rect = False
-    move_start: tuple | None = None
+    p1: Optional[tuple] = None
+    p2: Optional[tuple] = None
+    crop_box_id: Optional[int] = None
+    has_rect: bool = False
+    move_start: Optional[tuple] = None
 
     def mouse_down(event):
         """
