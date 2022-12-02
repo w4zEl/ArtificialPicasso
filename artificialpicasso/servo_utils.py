@@ -117,18 +117,22 @@ def safe_rotate(s: Servo, angle: float, delay: float = 0.03) -> None:
             time.sleep(delay)
         s.angle = angle
 
-def rotate3(servo1: Servo, angle1: float, servo2: Servo, angle2: float, increment: float, seconds: float = 0.5) -> None:
-    counter = increment
-    increment1 = (angle1-servo1.angle)/(seconds/increment)
-    increment2 = (angle2-servo2.angle)/(seconds/increment)
+
+def rotateee(servo1: Servo, angle1: float, servo2: Servo, angle2: float, seconds: float = 1,
+             incr: float = .01) -> None:
+    counter = 0
+    increment1 = (angle1 - servo1.angle) / (seconds / incr)
+    increment2 = (angle2 - servo2.angle) / (seconds / incr)
+    cap1 = min if increment1 > 0 else max
+    cap2 = min if increment2 > 0 else max
     curr_angle1 = servo1.angle
     curr_angle2 = servo2.angle
-    while counter<seconds:
-        servo1.angle = curr_angle1+increment1
-        servo2.angle = curr_angle2+increment2
-        curr_angle1 = servo1.angle
-        curr_angle2 = servo2.angle
-        counter += increment
-        time.sleep (increment)
+    while curr_angle1 != angle1:
+        curr_angle1 = cap1(curr_angle1 + increment1, angle1)
+        curr_angle2 = cap2(curr_angle2 + increment2, angle2)
+        servo1.angle = curr_angle1
+        servo2.angle = curr_angle2
+        counter += incr
+        time.sleep(incr)
     servo1.angle = angle1
     servo2.angle = angle2
