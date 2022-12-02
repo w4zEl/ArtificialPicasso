@@ -136,3 +136,17 @@ def rotateee(servo1: Servo, angle1: float, servo2: Servo, angle2: float, seconds
         time.sleep(incr)
     servo1.angle = angle1
     servo2.angle = angle2
+
+
+def rotate2_incremental(servo1: Servo, angle1: float, servo2: Servo, angle2: float, incr: float = 1, delay: float = .03):
+    if abs(angle1 - servo1.angle) < abs(angle2 - servo2.angle):
+        servo1, angle1, servo2, angle2 = servo2, angle2, servo1, angle1
+    incr2 = abs(angle2 - servo2.angle) / (abs(angle1 - servo1.angle) / incr)
+    curr_angle1 = servo1.angle
+    curr_angle2 = servo2.angle
+    while curr_angle1 != angle1:
+        curr_angle1 = increment(curr_angle1, incr, angle1)
+        curr_angle2 = increment(curr_angle2, incr2, angle2)
+        servo1.angle, servo2.angle = curr_angle1, curr_angle2
+        time.sleep(delay)
+    servo1.angle, servo2.angle = angle1, angle2
