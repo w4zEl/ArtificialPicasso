@@ -35,7 +35,7 @@ def run(image, strokeminlength=50, speed=99, edgeSensitivity=5):
                     cv2.circle(trace_img, (x, y), 2, (255, 0, 0), 1)
                     cv2.imshow('image', image)
 
-                    if animate and cv2.waitKey(speed) & 0xFF == ord('q'):
+                    if animate and cv2.waitKey(speed) == ord('q'):
                         cv2.destroyAllWindows()
                         stop = True
                         break
@@ -44,7 +44,7 @@ def run(image, strokeminlength=50, speed=99, edgeSensitivity=5):
         cv2.putText(image, 'Animation finished', (int((width - text_width) / 2), int((height + text_height) / 2)), font, 1,
                     (0, 0, 255), 2)
         cv2.imshow('image', image)
-    if cv2.waitKey(0) & 0xFF == ord('q'):
+    if cv2.waitKey(0) == ord('q'):
         cv2.destroyAllWindows()
     return trace_img
 
