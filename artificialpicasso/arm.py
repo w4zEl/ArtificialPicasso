@@ -1,7 +1,7 @@
 import math
 import mathutils
 from adafruit_motor.servo import Servo
-from servo_utils import rotate, rotate2, rotateee, safe_rotate, increment
+from servo_utils import rotate, rotate2, rotateee, safe_rotate, increment, rotate2_incremental
 import time
 from dataclasses import dataclass
 from typing import Optional
@@ -40,7 +40,7 @@ class ArmController:
         self.paper = paper
         if autosetpos:
             arm1servo.angle = arm2servo.angle = 90
-            tip_servo.angle = 180
+            tip_servo.angle = 170
 
     def __enter__(self):
         return self
@@ -85,7 +85,7 @@ class ArmController:
             x += self.paper.delta_x
             y += self.paper.delta_y
         angle1, angle2 = self.get_angles(x, y)
-        rotateee(self.arm1servo, angle1, self.arm2servo, angle2, seconds)
+        rotate2_incremental(self.arm1servo, angle1, self.arm2servo, angle2)
 
     def line(self, x1: float, y1: float, x2: float, y2: float, segment_len: float = 0.5, drop: bool = True) -> None:
         self.move_to(x1, y1)
@@ -107,7 +107,7 @@ class ArmController:
     def lift_tip(self) -> None:
         """Lifts the tip of the pen from the page.
         """
-        self.tip_servo.angle = 160
+        self.tip_servo.angle = 170
 
     def reset_positions(self):
         """Resets the positions of all the servos to their default position.
@@ -118,5 +118,3 @@ class ArmController:
             self.lift_tip()
             safe_rotate(self.arm2servo, 90)
             safe_rotate(self.arm1servo, 90)
-            time.sleep(0.2)
-            self.drop_tip()
