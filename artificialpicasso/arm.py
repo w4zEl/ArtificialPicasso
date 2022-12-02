@@ -1,14 +1,24 @@
-from adafruit_motor.servo import Servo
 import math
 import mathutils
-from servo_utils import rotate, rotate2, safe_rotate, increment
+from adafruit_motor.servo import Servo
+from servo_utils import rotate, rotate2, rotateee, safe_rotate, increment
 import time
 from dataclasses import dataclass
+from typing import Optional
+
+
+@dataclass
+class Paper:
+    """Value object to store attributes about the paper used for drawing"""
+    delta_x: float
+    delta_y: float
+    width: float
+    height: float
 
 
 class ArmController:
     def __init__(self, *, arm1len: float, arm2len: float, arm1servo: Servo, arm2servo: Servo, tip_servo: Servo,
-                 autosetpos: bool = True):
+                 autosetpos: bool = True, paper: Optional[Paper] = None):
         """Initializes all the different components of the robot, as well as their positions. 
 
         The default position of the arms are them perpendicular to each other and the base.
@@ -27,6 +37,7 @@ class ArmController:
         self.arm2servo = arm2servo
         self.tip_servo = tip_servo
         self.autosetpos = autosetpos
+        self.paper = paper
         if autosetpos:
             arm1servo.angle = arm2servo.angle = 90
             tip_servo.angle = 180
@@ -70,8 +81,11 @@ class ArmController:
             y: The y coordinate of the target location (Up is positive)
             seconds: The time taken to get to the location.
         """
+        if self.paper:
+            x += self.paper.delta_x
+            y += self.paper.delta_y
         angle1, angle2 = self.get_angles(x, y)
-        rotate2(self.arm1servo, angle1, self.arm2servo, angle2, seconds)
+        rotateee(self.arm1servo, angle1, self.arm2servo, angle2, seconds)
 
     def line(self, x1: float, y1: float, x2: float, y2: float, segment_len: float = 0.5, drop: bool = True) -> None:
         self.move_to(x1, y1)
@@ -80,8 +94,8 @@ class ArmController:
         dist = math.hypot(x2 - x1, y2 - y1)
         x, y = x1, y1
         segments = math.ceil(dist / segment_len)
-        rise = (y2 - y1) / segments
-        run = (x2 - x1) / segments
+        rise = abs(y2 - y1) / segments
+        run = abs(x2 - x1) / segments
         while x != x2:
             self.move_to(x := increment(x, run, x2), y := increment(y, rise, y2))
 
@@ -106,12 +120,3 @@ class ArmController:
             safe_rotate(self.arm1servo, 90)
             time.sleep(0.2)
             self.drop_tip()
-
-
-@dataclass
-class Paper:
-    """Value object to store attributes about the paper used for drawing"""
-    delta_x: float
-    delta_y: float
-    width: float
-    height: float
