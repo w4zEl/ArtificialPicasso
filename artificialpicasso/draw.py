@@ -10,13 +10,14 @@ from logsetup import logger
 import os.path
 from imgutils import cv2_image_to_image_tk
 import tkutils
+from threading import Thread
 
 
 def supplementary_angle(angle):
     return 180 - angle
 
 
-def draw(img):
+def draw(img, blur):
     draw_frame = tk.Frame(root)
     top_label = tk.Label(draw_frame, text='Drawing in progress...')
     top_label.pack()
@@ -29,27 +30,34 @@ def draw(img):
                                arm1servo=make_adjusted_servo(3, convert_angle=supplementary_angle, max_pulse=2500),
                                arm2servo=make_adjusted_servo(1, convert_angle=supplementary_angle, max_pulse=2500),
                                tip_servo=make_servo(0), paper=Paper(3.5, 3.5, 27.6, 21.3))
-    strokes = StrokeExtractor.getStrokes(img, 5)
+    strokes = StrokeExtractor.getStrokes(img, blur)
     strokeMinLength = 50
     img_height, img_width, *_ = img.shape
 
     def scale_to_paper(x, y):
         return (1 - x / img_width) * controller.paper.width, (1 - y / img_height) * controller.paper.height
 
-    for stroke in strokes:
-        perimeter = cv2.arcLength(stroke, True)
+    def update_img():
+        img_label.imgtk = cv2_image_to_image_tk(img)
+        img_label.configure(image=img_label.imgtk)
 
-        if perimeter >= strokeMinLength:
-            controller.lift_tip()
-            numOfPoints = len(stroke)
-            for (x, y), in stroke:
-                controller.move_to(*scale_to_paper(x, y), 0.1)
-                controller.drop_tip()
-                cv2.circle(img, (x, y), 2, (255, 0, 0), 1)
-                img_label.imgtk = cv2_image_to_image_tk(img)
-                img_label.configure(image=img_label.imgtk)
-    top_label.configure(text='Beautiful abstract art complete!')
-    tk.Button(draw_frame, text='Reset controller', command=controller.reset_positions).pack(after=img_label, pady=5)
+    def do_draw():
+        for stroke in strokes:
+            perimeter = cv2.arcLength(stroke, True)
+
+            if perimeter >= strokeMinLength:
+                controller.lift_tip()
+                first: bool = True
+                for (x, y), in stroke:
+                    controller.move_to(*scale_to_paper(x, y), 0.1 if first else 0.03)
+                    if first:
+                        controller.drop_tip()
+                        first = False
+                    cv2.circle(img, (x, y), 2, (255, 0, 0), 1)
+                    img_label.after(1, update_img)
+        top_label.configure(text='Beautiful abstract art complete!')
+        tk.Button(draw_frame, text='Reset controller', command=controller.reset_positions).pack(after=img_label, pady=5)
+    Thread(target=do_draw).start()
 
 
 def open_file():
@@ -57,7 +65,7 @@ def open_file():
     if filename and os.path.isfile(filename):
         img = cv2.imread(filename)
         main_frame.destroy()
-        draw(img)
+        draw(img, False)
     else:
         showwarning("ArtificialPicasso", "No image selected")
 
@@ -92,7 +100,7 @@ def show_cam_stream():
         def start_draw():
             cam_frame.destroy()
             cleanup_cropping()
-            draw(tkutils.crop(frame, crop_region))
+            draw(tkutils.crop(frame, crop_region), True)
         picture_btn.configure(text='Start drawing!', command=start_draw)
         crop_region = tkutils.CropRegion()
         cleanup_cropping = tkutils.setup_cropping(canvas, root, crop_region)
