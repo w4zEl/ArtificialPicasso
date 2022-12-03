@@ -14,7 +14,7 @@ def blur(image, edgeSensitivity):
     return blurredsketch
 
 
-def getStrokes(image, edgeSensitivity):
+def getStrokes(image, blur=True):
     """Generates the strokes of the image that need to be drawn.
 
     Uses canny edge detection and other contour-finding algorithms 
@@ -26,7 +26,10 @@ def getStrokes(image, edgeSensitivity):
     Returns:
         _type_: Returns a list of all the strokes of the image
     """
-    gray = blur(image, edgeSensitivity)
+    # gray = blur(image, edgeSensitivity)
+    gray = cv2.cvtColor(cv2.GaussianBlur(image, (3, 3), 0), cv2.COLOR_BGR2GRAY)
+    if blur:
+        gray = cv2.GaussianBlur(gray, (3, 3), 0)
     edges = cv2.Canny(gray, 1, 50)
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
     edges = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel)
