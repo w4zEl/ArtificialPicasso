@@ -54,7 +54,8 @@ class ArmController:
             exc_val: Value of the exception that occurred
             exc_tb: Traceback of the exception that occurred
         """
-        self.reset_positions()
+        if self.autosetpos:
+            self.reset_positions()
 
     def get_angles(self, x: float, y: float) -> tuple[float, float]:
         """Given a (x, y) coordinate, find the two angles that the robotic arms 
@@ -72,20 +73,20 @@ class ArmController:
         angle2 = 180 - mathutils.cosine_law_find_angle(self.arm1len, self.arm2len, dist)
         return angle1, angle2
 
-    def move_to(self, x: float, y: float, seconds: float = 0.5) -> None:
+    def move_to(self, x: float, y: float, delay: float = 0.03) -> None:
         """Given a (x, y) coordinate and a specified time, moves the robotic arm 
         to the desired coordinate within that exact time frame.
 
         Args:
             x: The x coordinate of the target location (Left is positive)
             y: The y coordinate of the target location (Up is positive)
-            seconds: The time taken to get to the location.
+            delay: The delay in between movements.
         """
         if self.paper:
             x += self.paper.delta_x
             y += self.paper.delta_y
         angle1, angle2 = self.get_angles(x, y)
-        rotate2_incremental(self.arm1servo, angle1, self.arm2servo, angle2)
+        rotate2_incremental(self.arm1servo, angle1, self.arm2servo, angle2, delay)
 
     def line(self, x1: float, y1: float, x2: float, y2: float, segment_len: float = 0.5, drop: bool = True) -> None:
         self.move_to(x1, y1)
@@ -114,7 +115,6 @@ class ArmController:
         The default position is both the arms perpendicular to each other and the base.
         The default position of the tip_servo connects the pen to the paper. 
         """
-        if self.autosetpos:
-            self.lift_tip()
-            safe_rotate(self.arm2servo, 90)
-            safe_rotate(self.arm1servo, 90)
+        self.lift_tip()
+        safe_rotate(self.arm2servo, 90)
+        safe_rotate(self.arm1servo, 90)
