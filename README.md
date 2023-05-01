@@ -4,6 +4,7 @@
 
 * [**The Artificial Picasso Official Documentation Site**](https://w4zel.github.io/ArtificialPicasso/)
 * [**Waterloo Software Engineering**](https://uwaterloo.ca/future-students/programs/software-engineering)
+* [**Project Demo Video**](https://youtu.be/NXo7NrgmTQk)
 
 ![](docs/media/GroupPhoto.jpg)
 
@@ -57,6 +58,7 @@ Jason Cheng - [jcheng3927](https://github.com/jcheng3927)
 
 # **🍎 Built With**
 Love, sweat, and tears
+...and a little bit of Python
 
 # **🎹 License**
 Distributed under the [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html). See [LICENSE](LICENSE) for more information.
